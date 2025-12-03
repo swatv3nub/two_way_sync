@@ -1,0 +1,7 @@
+gspread
+oauth2client
+requests
+python-dotenv
+fastapi
+uvicorn
+pydantic
