@@ -14,3 +14,17 @@ class Config():
     POLL_INTERVAL_SECONDS = int(os.environ.get("POLL_INTERVAL_SECONDS", 20))
     LOG_LEVEL = os.environ.get("LOG_LEVEL", "info")
     SQLITE_DB_PATH = os.environ.get("SQLITE_DB_PATH", "./data/database.db")
+
+    @classmethod
+    def validate(cls):
+        required_fields = [
+            "GSHEET_SERVICE_ACCOUNT_JSON",
+            "GSHEET_SPREADSHEET_ID",
+            "JIRA_BASE_URL",
+            "JIRA_EMAIL",
+            "JIRA_API_TOKEN",
+            "JIRA_PROJECT_KEY",
+        ]
+        missing = [field for field in required_fields if not getattr(cls, field)]
+        if missing:
+            raise ValueError(f"Missing required configuration: {', '.join(missing)}")

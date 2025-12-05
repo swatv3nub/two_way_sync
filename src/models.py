@@ -1,4 +1,3 @@
-# Models for Lead and Task
 from dataclasses import dataclass
 from typing import Optional
 
@@ -21,3 +20,4 @@ class Task:
     status: str
     priority: Optional[str]
     story_points: Optional[int]
+    updated_at: Optional[str]  
